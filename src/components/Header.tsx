@@ -19,6 +19,11 @@ export function Header() {
                 About
               </Link>
             </li>
+            <li>
+              <Link to="/booked-mentors" className="hover:underline">
+                Booked Mentors
+              </Link>
+            </li>
           </ul>
         </nav>
       </div>

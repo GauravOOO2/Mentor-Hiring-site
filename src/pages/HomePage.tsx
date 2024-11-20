@@ -36,7 +36,7 @@ export function HomePage() {
     <>
       <div className="flex flex-col min-h-screen bg-gray-50">
         <div className="container mx-auto px-4 py-8 flex-grow">
-          <div className="bg-gray-200 p-6 rounded-lg mb-6">
+          <div className="bg-gray-300 p-6 rounded-lg mb-6">
             <h1 className="text-4xl font-bold text-center mb-4">Find Your Perfect Mentor</h1>
             <div className="text-center mb-6">
               <h2 className="text-2xl font-semibold">Find and Hire Freelance Mentors</h2>
@@ -48,11 +48,11 @@ export function HomePage() {
                 <input
                   type="text"
                   placeholder="Search by name, skill, or profession..."
-                  className="border rounded-full pl-10 pr-4 py-2 w-full border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-600"
+                  className="border-2 rounded-full pl-10 pr-4 py-3 w-full border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-600 transition duration-300 ease-in-out shadow-lg hover:shadow-xl"
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                 />
-                <FaSearch className="absolute left-3 top-2.5 text-gray-500" />
+                <FaSearch className="absolute left-4 top-4 text-gray-500 transition duration-300 ease-in-out transform hover:scale-125" />
               </div>
             </div>
           </div>

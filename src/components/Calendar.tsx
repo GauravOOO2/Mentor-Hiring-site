@@ -16,6 +16,8 @@ export function Calendar({ selectedDate, onSelectDate }: CalendarProps) {
   const handlePrevMonth = () => setCurrentMonth(subMonths(currentMonth, 1))
   const handleNextMonth = () => setCurrentMonth(addMonths(currentMonth, 1))
 
+  const today = new Date()
+
   return (
     <div className="bg-white rounded-lg shadow overflow-hidden">
       <div className="flex items-center justify-between p-4 bg-blue-600 text-white">
@@ -32,13 +34,19 @@ export function Calendar({ selectedDate, onSelectDate }: CalendarProps) {
         {monthDays.map((day) => (
           <button
             key={day.toISOString()}
-            onClick={() => onSelectDate(day)}
+            onClick={() => {
+              if (day >= today) {
+                onSelectDate(day)
+              }
+            }}
             className={`
               p-2 rounded-full
               ${!isSameMonth(day, currentMonth) && 'text-gray-400'}
               ${isSameDay(day, selectedDate as Date) && 'bg-blue-600 text-white'}
               ${isToday(day) && !isSameDay(day, selectedDate as Date) && 'bg-blue-100'}
+              ${day < today && 'text-gray-300 cursor-not-allowed'}
             `}
+            disabled={day < today}
           >
             {format(day, 'd')}
           </button>

@@ -3,6 +3,7 @@ import { HomePage } from './pages/HomePage'
 import { MentorProfilePage } from './pages/MentorProfilePage'
 import { BookingPage } from './pages/BookingPage'
 import { ConfirmationPage } from './pages/ConfirmationPage'
+import { BookedMentorsPage } from './pages/BookedMentorsPage'
 import { Header } from './components/Header'
 
 export default function App() {
@@ -16,6 +17,7 @@ export default function App() {
             <Route path="/mentor/:id" element={<MentorProfilePage />} />
             <Route path="/booking/:id" element={<BookingPage />} />
             <Route path="/confirmation" element={<ConfirmationPage />} />
+            <Route path="/booked-mentors" element={<BookedMentorsPage />} />
           </Routes>
         </main>
       </div>

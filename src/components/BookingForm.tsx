@@ -15,6 +15,19 @@ export function BookingForm({ mentor, selectedDate, selectedSlot, onSubmit }: Bo
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     onSubmit(purpose)
+
+    // Store booking in local storage
+    const booking = {
+      mentor,
+      date: selectedDate,
+      slot: `${selectedSlot?.startTime} - ${selectedSlot?.endTime}`,
+      purpose,
+    }
+
+    const existingBookings = localStorage.getItem('bookedMentors')
+    const bookingsArray = existingBookings ? JSON.parse(existingBookings) : []
+    bookingsArray.push(booking)
+    localStorage.setItem('bookedMentors', JSON.stringify(bookingsArray))
   }
 
   return (
