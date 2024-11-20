@@ -8,8 +8,43 @@ body {
 
 h1, h2 {
   color: #1a202c; /* Darker text for headings */
+  font-size: 1.5rem; /* Adjusted for mobile */
 }
 
 p {
   color: #4a5568; /* Gray text for paragraphs */
+  font-size: 0.9rem; /* Adjusted for mobile */
+}
+
+/* Media Queries for Mobile */
+@media (max-width: 640px) {
+  .container {
+    padding: 0 1rem; /* Adjust padding for mobile */
+  }
+
+  .bg-gray-300 {
+    padding: 1rem; /* Adjust padding for informational boxes */
+  }
+
+  .text-4xl {
+    font-size: 2rem; /* Smaller font size for headings */
+  }
+
+  .text-2xl {
+    font-size: 1.5rem; /* Smaller font size for subheadings */
+  }
+
+  .text-xl {
+    font-size: 1.25rem; /* Smaller font size for text */
+  }
+
+  /* Additional styles to reduce sizes of buttons, cards, etc. */
+
+  .skill-buttons {
+    display: none; /* Hide skill buttons on small screens */
+  }
+
+  .my-textarea{
+    display: none;
+  }
 }

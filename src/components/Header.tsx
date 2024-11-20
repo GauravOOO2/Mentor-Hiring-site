@@ -10,16 +10,6 @@ export function Header() {
         <nav>
           <ul className="flex space-x-4">
             <li>
-              <Link to="/" className="hover:underline">
-                Home
-              </Link>
-            </li>
-            <li>
-              <Link to="/about" className="hover:underline">
-                About
-              </Link>
-            </li>
-            <li>
               <Link to="/booked-mentors" className="hover:underline">
                 Booked Mentors
               </Link>

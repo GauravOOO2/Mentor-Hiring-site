@@ -14,6 +14,7 @@ export function HomePage() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedSkill, setSelectedSkill] = useState<string | null>(null);
   const [visibleMentors, setVisibleMentors] = useState(6); // Number of mentors to show initially
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   // Filter mentors based on the search term and selected skill
   const filteredMentors = mentors.filter(mentor => {
@@ -36,8 +37,8 @@ export function HomePage() {
     <>
       <div className="flex flex-col min-h-screen bg-gray-50">
         <div className="container mx-auto px-4 py-8 flex-grow">
-          <div className="bg-gray-300 p-6 rounded-lg mb-6">
-            <h1 className="text-4xl font-bold text-center mb-4">Find Your Perfect Mentor</h1>
+          <div className="bg-gray-300 p-6 rounded-lg mb-6 mt-4">
+            <h1 className="text-4xl font-bold text-center mb-4 hidden md:block">Find Your Perfect Mentor</h1>
             <div className="text-center mb-6">
               <h2 className="text-2xl font-semibold">Find and Hire Freelance Mentors</h2>
               <p className="text-gray-600">Browse 1,931 Mentoring Experts Free</p>
@@ -56,8 +57,8 @@ export function HomePage() {
               </div>
             </div>
 
-            {/* Skill Filter Buttons - Moved here */}
-            <div className="flex justify-center mb-4">
+            {/* Skill Filter Buttons - Hidden on Small Screens */}
+            <div className="flex justify-center mb-4 skill-buttons">
               {skills.map(skill => (
                 <button
                   key={skill}
@@ -74,29 +75,64 @@ export function HomePage() {
                 All
               </button>
             </div>
-          </div>
 
-          {/* Informational Boxes */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-            <div className="bg-white p-4 rounded-lg shadow flex items-center justify-center">
-              <FaUsers className="text-blue-600 text-3xl mr-2" />
-              <div className="text-center">
-                <h3 className="text-xl font-bold">800,000</h3>
-                <p className="text-gray-600">Employers Worldwide</p>
-              </div>
+            {/* Informational Boxes - Converted to Dropdown for Mobile */}
+            <div className="md:hidden">
+              <button 
+                onClick={() => setIsDropdownOpen(!isDropdownOpen)} 
+                className="bg-blue-600 text-white px-4 py-2 rounded shadow hover:bg-blue-700 transition"
+              >
+                Info
+              </button>
+              {isDropdownOpen && (
+                <div className="bg-white shadow-lg rounded-lg p-4 mt-2 transition-transform transform scale-100">
+                  <div className="flex items-center justify-start mb-4">
+                    <FaUsers className="text-blue-600 text-3xl mr-2" />
+                    <div className="text-left">
+                      <h3 className="text-xl font-bold">800,000</h3>
+                      <p className="text-gray-600">Employers Worldwide</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center justify-start mb-4">
+                    <FaFileInvoiceDollar className="text-blue-600 text-3xl mr-2" />
+                    <div className="text-left">
+                      <h3 className="text-xl font-bold">1 Million</h3>
+                      <p className="text-gray-600">Paid Invoices</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center justify-start">
+                    <FaMoneyBillWave className="text-blue-600 text-3xl mr-2" />
+                    <div className="text-left">
+                      <h3 className="text-xl font-bold">$250 Million</h3>
+                      <p className="text-gray-600">Paid to Freelancers</p>
+                    </div>
+                  </div>
+                </div>
+              )}
             </div>
-            <div className="bg-white p-4 rounded-lg shadow flex items-center justify-center">
-              <FaFileInvoiceDollar className="text-blue-600 text-3xl mr-2" />
-              <div className="text-center">
-                <h3 className="text-xl font-bold">1 Million</h3>
-                <p className="text-gray-600">Paid Invoices</p>
+
+            {/* Informational Boxes - Desktop View */}
+            <div className="hidden md:grid md:grid-cols-3 gap-4 mb-6">
+              <div className="bg-white p-4 rounded-lg shadow flex items-center justify-center">
+                <FaUsers className="text-blue-600 text-3xl mr-2" />
+                <div className="text-center">
+                  <h3 className="text-xl font-bold">800,000</h3>
+                  <p className="text-gray-600">Employers Worldwide</p>
+                </div>
               </div>
-            </div>
-            <div className="bg-white p-4 rounded-lg shadow flex items-center justify-center">
-              <FaMoneyBillWave className="text-blue-600 text-3xl mr-2" />
-              <div className="text-center">
-                <h3 className="text-xl font-bold">$250 Million</h3>
-                <p className="text-gray-600">Paid to Freelancers</p>
+              <div className="bg-white p-4 rounded-lg shadow flex items-center justify-center">
+                <FaFileInvoiceDollar className="text-blue-600 text-3xl mr-2" />
+                <div className="text-center">
+                  <h3 className="text-xl font-bold">1 Million</h3>
+                  <p className="text-gray-600">Paid Invoices</p>
+                </div>
+              </div>
+              <div className="bg-white p-4 rounded-lg shadow flex items-center justify-center">
+                <FaMoneyBillWave className="text-blue-600 text-3xl mr-2" />
+                <div className="text-center">
+                  <h3 className="text-xl font-bold">$250 Million</h3>
+                  <p className="text-gray-600">Paid to Freelancers</p>
+                </div>
               </div>
             </div>
           </div>
@@ -131,32 +167,32 @@ export function HomePage() {
               <p className="text-gray-700 mb-2">
                 Personal training oversees an individual’s fitness in a fitness facility or private setting. If you are looking for a healthy lifestyle, a commitment to a fit physique, and want to take your fitness to the next level, you must appoint a freelance personal trainer. If you are concerned about how to hire a personal trainer, Guru can help you connect with the best trainers.
               </p>
-              <p className="text-gray-700 mb-2">
+              <p className="text-gray-700 mb-2 my-textarea">
                 <strong>What Does a Personal Trainer Do?</strong><br />
                 Personal trainers are professionals who give guidance to clients interested in weight loss, muscle building, or increasing fitness levels. They create individual plans for achieving the fitness goals as per the client’s requirement. They also give you supplemental nutritional information that will help support your fitness goals. These professionals also educate you on different ways to engage in physical exercise and healthy living.
               </p>
-              <p className="text-gray-700 mb-2">
+              <p className="text-gray-700 mb-2 my-textarea">
                 Personal trainers have to make sure that they provide the clients with safe, reasonable exercises that can be performed in the gym as well as at home. A freelance fitness trainer leads, instructs, and encourages individuals or groups of all ages in different exercise activities. If one is interested in learning about the yogic lifestyle, food, exercises, meditation, and more, one must consider yoga instructors for hire.
               </p>
-              <p className="text-gray-700 mb-2">
+              <p className="text-gray-700 mb-2 my-textarea">
                 If you are looking to hire an online personal trainer, Guru can help you find the best professional in this domain. Before you find an online personal trainer, do ensure that the professional:
               </p>
-              <ul className="list-disc list-inside mb-4">
+              <ul className="list-disc list-inside mb-4  ">
                 <li>Has knowledge of human anatomy, exercise, and nutrition.</li>
                 <li>They are able to assess and screen the clients, both initially and progressively.</li>
                 <li>They can design health, wellness, and fitness programs as per the client’s specific needs.</li>
                 <li>They have a good understanding of cardiovascular, flexibility, resistance exercises, and other forms and formats of exercises.</li>
               </ul>
-              <p className="text-gray-700 mb-2">
+              <p className="text-gray-700 mb-2 my-textarea">
                 <strong>Benefits of Hiring Personal Trainers</strong><br />
                 Personal trainers will create a workout plan that will help you meet your fitness goals. These professionals will make the plan on the basis of your current physical state.
               </p>
-              <p className="text-gray-700 mb-2">
+              <p className="text-gray-700 mb-2 my-textarea">
                 These experts will make sure that you are using the correct form of exercise to get the best results. You can find an online personal trainer who will guide you on both achieving fitness goals and nutritional requirements. Personal trainers will use their expertise to come up with new exercises and workouts. A freelance personal trainer will keep your entire plan exciting by introducing new and innovative ways to increase your fitness levels and keep the journey interesting.
               </p>
             </div>
 
-            <div className="md:w-1/3 bg-blue-100 p-6 rounded-lg shadow-md ml-0 md:ml-4">
+            <div className="md:w-1/3 bg-blue-100 p-5 mb-3 rounded-lg shadow-md ml-0 md:ml-4">
               <h2 className="text-xl font-bold mb-4">Popular Skills</h2>
               <ul className="list-disc list-inside">
                 <li>Fitness Consultants</li>
