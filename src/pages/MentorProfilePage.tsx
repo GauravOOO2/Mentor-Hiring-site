@@ -17,27 +17,42 @@ export function MentorProfilePage() {
   }
 
   return (
-    <div className="bg-white rounded-lg shadow-md overflow-hidden">
-      <div className="p-6">
-        <div className="flex items-center mb-6">
-          <img
-            src={mentor.photo}
-            alt={mentor.name}
-            className="w-24 h-24 rounded-full mr-6"
-          />
-          <div>
-            <h1 className="text-3xl font-bold mb-2">{mentor.name}</h1>
-            <p className="text-xl text-gray-600 mb-2">{mentor.title}</p>
-            <p className="text-gray-600">{mentor.location}</p>
+    <div className="container mx-auto px-4 py-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {/* Left Column: Mentor Information */}
+        <div className="bg-white rounded-lg shadow-md p-6">
+          <div className="flex items-center mb-6">
+            <img
+              src={mentor.photo}
+              alt={mentor.name}
+              className="w-24 h-24 rounded-full mr-6"
+            />
+            <div>
+              <h1 className="text-3xl font-bold mb-2">{mentor.name}</h1>
+              <p className="text-xl text-gray-600 mb-2">{mentor.title}</p>
+              <p className="text-gray-600">{mentor.location}</p>
+            </div>
           </div>
+          <div className="mb-6">
+            <h2 className="text-2xl font-semibold mb-2">About Me</h2>
+            <p className="text-gray-700">{mentor.bio}</p>
+          </div>
+          <div className="mb-6">
+            <h2 className="text-2xl font-semibold mb-2">Pricing</h2>
+            <p className="text-xl font-bold text-blue-600">${mentor.hourlyRate}/hr</p>
+          </div>
+          <Link
+            to={`/booking/${mentor.id}`}
+            className="block w-full bg-blue-600 text-white text-center px-4 py-2 rounded hover:bg-blue-700 transition"
+          >
+            Book a Session
+          </Link>
         </div>
-        <div className="mb-6">
-          <h2 className="text-2xl font-semibold mb-2">About Me</h2>
-          <p className="text-gray-700">{mentor.bio}</p>
-        </div>
-        <div className="mb-6">
+
+        {/* Right Column: Skills and Services */}
+        <div className="bg-white rounded-lg shadow-md p-6">
           <h2 className="text-2xl font-semibold mb-2">Skills</h2>
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-2 mb-6">
             {mentor.skills.map((skill: string) => (
               <span
                 key={skill}
@@ -47,17 +62,25 @@ export function MentorProfilePage() {
               </span>
             ))}
           </div>
+          <h2 className="text-2xl font-semibold mb-2">Services</h2>
+          <div className="grid grid-cols-1 gap-4">
+            <div className="bg-blue-100 p-4 rounded-lg">
+              <h3 className="text-xl font-semibold">Java/Python/JS/Go Expert</h3>
+              <p className="text-gray-600">$80/hr - Starting at $1K</p>
+              <p className="text-gray-700">Expertise in implementation, customization, integration, and support of business application systems.</p>
+            </div>
+            <div className="bg-blue-100 p-4 rounded-lg">
+              <h3 className="text-xl font-semibold">C/C++ Software Development</h3>
+              <p className="text-gray-600">$80/hr - Starting at $1K</p>
+              <p className="text-gray-700">Experience in making game plugins and reverse engineering assembly.</p>
+            </div>
+            <div className="bg-blue-100 p-4 rounded-lg">
+              <h3 className="text-xl font-semibold">AWS Serverless Backend Engineer</h3>
+              <p className="text-gray-600">$80/hr - Starting at $1K</p>
+              <p className="text-gray-700">Expertise in architecture blueprints and detailed documentation.</p>
+            </div>
+          </div>
         </div>
-        <div className="mb-6">
-          <h2 className="text-2xl font-semibold mb-2">Pricing</h2>
-          <p className="text-xl font-bold text-blue-600">${mentor.hourlyRate}/hr</p>
-        </div>
-        <Link
-          to={`/booking/${mentor.id}`}
-          className="block w-full bg-blue-600 text-white text-center px-4 py-2 rounded hover:bg-blue-700 transition"
-        >
-          Book a Session
-        </Link>
       </div>
     </div>
   )
