@@ -64,21 +64,13 @@ export function MentorProfilePage() {
           </div>
           <h2 className="text-2xl font-semibold mb-2">Services</h2>
           <div className="grid grid-cols-1 gap-4">
-            <div className="bg-blue-100 p-4 rounded-lg">
-              <h3 className="text-xl font-semibold">Java/Python/JS/Go Expert</h3>
-              <p className="text-gray-600">$80/hr - Starting at $1K</p>
-              <p className="text-gray-700">Expertise in implementation, customization, integration, and support of business application systems.</p>
-            </div>
-            <div className="bg-blue-100 p-4 rounded-lg">
-              <h3 className="text-xl font-semibold">C/C++ Software Development</h3>
-              <p className="text-gray-600">$80/hr - Starting at $1K</p>
-              <p className="text-gray-700">Experience in making game plugins and reverse engineering assembly.</p>
-            </div>
-            <div className="bg-blue-100 p-4 rounded-lg">
-              <h3 className="text-xl font-semibold">AWS Serverless Backend Engineer</h3>
-              <p className="text-gray-600">$80/hr - Starting at $1K</p>
-              <p className="text-gray-700">Expertise in architecture blueprints and detailed documentation.</p>
-            </div>
+            {mentor.services.map((service) => (
+              <div key={service.title} className="bg-blue-100 p-4 rounded-lg">
+                <h3 className="text-xl font-semibold">{service.title}</h3>
+                <p className="text-gray-600">{service.price}</p>
+                <p className="text-gray-700">{service.description}</p>
+              </div>
+            ))}
           </div>
         </div>
       </div>
