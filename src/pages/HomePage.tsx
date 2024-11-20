@@ -55,50 +55,54 @@ export function HomePage() {
                 <FaSearch className="absolute left-4 top-4 text-gray-500 transition duration-300 ease-in-out transform hover:scale-125" />
               </div>
             </div>
+
+            {/* Skill Filter Buttons - Moved here */}
+            <div className="flex justify-center mb-4">
+              {skills.map(skill => (
+                <button
+                  key={skill}
+                  onClick={() => setSelectedSkill(skill)}
+                  className="bg-blue-100 text-blue-800 text-sm font-semibold px-3 py-1 rounded-full mx-1 hover:bg-blue-200 transition"
+                >
+                  {skill}
+                </button>
+              ))}
+              <button
+                onClick={() => setSelectedSkill(null)} // Clear skill filter
+                className="bg-gray-200 text-gray-800 text-sm font-semibold px-3 py-1 rounded-full mx-1 hover:bg-gray-300 transition"
+              >
+                All
+              </button>
+            </div>
           </div>
 
           {/* Informational Boxes */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-            <div className="bg-white p-4 rounded-lg shadow flex items-center">
+            <div className="bg-white p-4 rounded-lg shadow flex items-center justify-center">
               <FaUsers className="text-blue-600 text-3xl mr-2" />
-              <div>
+              <div className="text-center">
                 <h3 className="text-xl font-bold">800,000</h3>
                 <p className="text-gray-600">Employers Worldwide</p>
               </div>
             </div>
-            <div className="bg-white p-4 rounded-lg shadow flex items-center">
+            <div className="bg-white p-4 rounded-lg shadow flex items-center justify-center">
               <FaFileInvoiceDollar className="text-blue-600 text-3xl mr-2" />
-              <div>
+              <div className="text-center">
                 <h3 className="text-xl font-bold">1 Million</h3>
                 <p className="text-gray-600">Paid Invoices</p>
               </div>
             </div>
-            <div className="bg-white p-4 rounded-lg shadow flex items-center">
+            <div className="bg-white p-4 rounded-lg shadow flex items-center justify-center">
               <FaMoneyBillWave className="text-blue-600 text-3xl mr-2" />
-              <div>
+              <div className="text-center">
                 <h3 className="text-xl font-bold">$250 Million</h3>
                 <p className="text-gray-600">Paid to Freelancers</p>
               </div>
             </div>
           </div>
 
-          <div className="flex justify-center mb-4">
-            {skills.map(skill => (
-              <button
-                key={skill}
-                onClick={() => setSelectedSkill(skill)}
-                className="bg-blue-100 text-blue-800 text-sm font-semibold px-3 py-1 rounded-full mx-1 hover:bg-blue-200 transition"
-              >
-                {skill}
-              </button>
-            ))}
-            <button
-              onClick={() => setSelectedSkill(null)} // Clear skill filter
-              className="bg-gray-200 text-gray-800 text-sm font-semibold px-3 py-1 rounded-full mx-1 hover:bg-gray-300 transition"
-            >
-              All
-            </button>
-          </div>
+          {/* New Heading for Mentor Cards */}
+          <h2 className="text-3xl font-bold text-center mb-6">Top Personal Training Freelancing Services</h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center">
             {filteredMentors.slice(0, visibleMentors).map((mentor) => (
@@ -171,7 +175,7 @@ export function HomePage() {
         {/* Footer */}
         <footer className="bg-gray-800 text-white py-6 w-full">
           <div className="container mx-auto text-center">
-            <h2 className="text-2xl font-bold mb-2">Join Us Today!</h2>
+            <h2 className="text-2xl text-white font-bold mb-2">Join Us Today!</h2>
             <p className="mb-4">Connect with top mentors and take your career to the next level.</p>
             <div className="flex justify-center space-x-4">
               <a href="#" className="hover:underline">About Us</a>
