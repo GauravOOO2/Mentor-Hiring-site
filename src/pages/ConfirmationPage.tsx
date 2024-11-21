@@ -33,6 +33,9 @@ export function ConfirmationPage() {
           </p>
         </div>
       </div>
+      <p className="text-gray-600 mb-4 text-center">
+        Please find your bookings at the booked Mentors section at the top button.
+      </p>
       <div className="text-center">
         <Link
           to="/"

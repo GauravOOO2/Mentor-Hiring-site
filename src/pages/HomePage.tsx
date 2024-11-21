@@ -5,9 +5,9 @@ import { FaSearch, FaUsers, FaFileInvoiceDollar, FaMoneyBillWave } from 'react-i
 
 const skills = [
   'Business Planning',
-  'Data Analysis',
-  'UX/UI Design',
-  'Career Coaching',
+  'Android Development',
+  'Ethical Hacking',
+  'Machine Learning',
 ];
 
 export function HomePage() {
